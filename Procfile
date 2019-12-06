@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath src index:app:server
+web: gunicorn --pythonpath src index.app:server
