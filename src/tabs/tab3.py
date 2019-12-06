@@ -6,7 +6,7 @@ import altair as alt
 import pandas as pd
 import dash_bootstrap_components as dbc
 
-df_raw = pd.read_csv('../data/unemply_df_month.csv', index_col=0)
+df_raw = pd.read_csv('../../data/unemply_df_month.csv', index_col=0)
 industry_options = [{'label': industry, 'value': industry} for industry in df_raw.industry.unique()]
 year_options_2 = {year:str(year) for year in range(2000, 2010)}
 

@@ -6,7 +6,7 @@ import altair as alt
 import pandas as pd
 import dash_bootstrap_components as dbc
 
-df_raw = pd.read_csv('../data/unemply_df_year.csv', index_col=0)
+df_raw = pd.read_csv('../../data/unemply_df_year.csv', index_col=0)
 year_options_1 = {year:str(year) for year in range(2000, 2011)}
 
 def make_plot1(year_range=[2003,2005], stat = 'rate'): #Add in a default value to start with
