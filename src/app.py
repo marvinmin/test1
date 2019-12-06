@@ -52,7 +52,7 @@ def update_plot1(year_range, value):
 @app.callback(
     dash.dependencies.Output('year_range-output', 'children'),
     [dash.dependencies.Input('year_range', 'value')])
-def update_output3(year_range):
+def update_output1(year_range):
     return 'You have selected from {} to {}.'.format(year_range[0], year_range[1])
 
 #PLOT 2 CALL BACK  
@@ -80,7 +80,6 @@ def update_plot3(industries, year, value):
     [dash.dependencies.Input('year3', 'value')])
 def update_output3(year):
     return 'You have selected Year: {}'.format(year)
-
 
 if __name__ == '__main__':
     app.run_server(debug=True)
