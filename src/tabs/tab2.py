@@ -5,7 +5,7 @@ from dash.dependencies import Input, Output
 import altair as alt
 import pandas as pd
 import dash_bootstrap_components as dbc
-
+from app import app
 
 df_raw = pd.read_csv('../data/unemply_df_year.csv', index_col=0)
 industry_options = [{'label': industry, 'value': industry} for industry in df_raw.industry.unique()]
