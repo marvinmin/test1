@@ -124,6 +124,8 @@ content3 = html.Div([
                             html.Br(),
                             html.Br(),
                             html.Br(),
+                            html.Br(),
+                            html.Br(),
                             html.H4('Choose Statistic:'),
                             html.Div(
                                 dcc.RadioItems(
