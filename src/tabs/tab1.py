@@ -5,7 +5,6 @@ from dash.dependencies import Input, Output
 import altair as alt
 import pandas as pd
 import dash_bootstrap_components as dbc
-from app import app
 
 df_raw = pd.read_csv('../data/unemply_df_year.csv', index_col=0)
 year_options_1 = {year:str(year) for year in range(2000, 2011)}
@@ -164,18 +163,3 @@ content1 = html.Div([
                     ])
                 ])
 
-#PLOT 1 CALL BACK  
-@app.callback(
-    dash.dependencies.Output('plot', 'srcDoc'),
-    [dash.dependencies.Input('year_range', 'value'),
-     dash.dependencies.Input('dd-value', 'value'),])
-def update_plot1(year_range, value):
-    updated_plot1 = make_plot1(year_range, value).to_html()
-    return updated_plot1
-
-# Tab 1 chosen year range call back
-@app.callback(
-    dash.dependencies.Output('year_range-output', 'children'),
-    [dash.dependencies.Input('year_range', 'value')])
-def update_output3(year_range):
-    return 'You have selected from {} to {}.'.format(year_range[0], year_range[1])

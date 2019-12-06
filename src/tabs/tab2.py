@@ -5,7 +5,6 @@ from dash.dependencies import Input, Output
 import altair as alt
 import pandas as pd
 import dash_bootstrap_components as dbc
-from app import app
 
 df_raw = pd.read_csv('../data/unemply_df_year.csv', index_col=0)
 industry_options = [{'label': industry, 'value': industry} for industry in df_raw.industry.unique()]
@@ -155,11 +154,4 @@ content2 = html.Div([
                         ])
                     ])
                 ])
-#PLOT 2 CALL BACK  
-@app.callback(
-    dash.dependencies.Output('plot2', 'srcDoc'),
-    [dash.dependencies.Input('industries_list', 'value'),
-     dash.dependencies.Input('dd-value2', 'value'),])
-def update_plot2(industries, value):
-    updated_plot2 = make_plot2(industries, value).to_html()
-    return updated_plot2
+

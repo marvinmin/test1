@@ -3,14 +3,15 @@ import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
+from tabs import tab1, tab2, tab3
 
 external_stylesheets = [dbc.themes.BOOTSTRAP]
+# external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 app.title = 'Group112 Dash app: Unemployment'
-
 app.config.suppress_callback_exceptions = True
-from tabs import tab1, tab2, tab3
+
 #LAYOUT
 app.layout = html.Div([ 
     
@@ -37,6 +38,49 @@ def render_content(tab):
         return tab2.content2
     elif tab == 'tab-3':
         return tab3.content3
+
+#PLOT 1 CALL BACK  
+@app.callback(
+    dash.dependencies.Output('plot', 'srcDoc'),
+    [dash.dependencies.Input('year_range', 'value'),
+     dash.dependencies.Input('dd-value', 'value'),])
+def update_plot1(year_range, value):
+    updated_plot1 = tab1.make_plot1(year_range, value).to_html()
+    return updated_plot1
+
+# Tab 1 chosen year range call back
+@app.callback(
+    dash.dependencies.Output('year_range-output', 'children'),
+    [dash.dependencies.Input('year_range', 'value')])
+def update_output3(year_range):
+    return 'You have selected from {} to {}.'.format(year_range[0], year_range[1])
+
+#PLOT 2 CALL BACK  
+@app.callback(
+    dash.dependencies.Output('plot2', 'srcDoc'),
+    [dash.dependencies.Input('industries_list', 'value'),
+     dash.dependencies.Input('dd-value2', 'value'),])
+def update_plot2(industries, value):
+    updated_plot2 = tab2.make_plot2(industries, value).to_html()
+    return updated_plot2
+
+#PLOT 3 CALL BACK  
+@app.callback(
+    dash.dependencies.Output('plot3', 'srcDoc'),
+    [dash.dependencies.Input('industries_list3', 'value'),
+     dash.dependencies.Input('year3', 'value'),
+     dash.dependencies.Input('dd-value3', 'value'),])
+def update_plot3(industries, year, value):
+    updated_plot3 = tab3.make_plot3(industries, year, value).to_html()
+    return updated_plot3
+
+# Tab 3 chosen year call back
+@app.callback(
+    dash.dependencies.Output('year3-output', 'children'),
+    [dash.dependencies.Input('year3', 'value')])
+def update_output3(year):
+    return 'You have selected Year: {}'.format(year)
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)
