@@ -7,7 +7,7 @@ from tabs import tab1, tab2, tab3
 
 external_stylesheets = [dbc.themes.BOOTSTRAP]
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__, assets_folder='assets', external_stylesheets=[dbc.themes.CERULEAN])
 server = app.server
 app.title = 'Group112 Dash app: Unemployment'
 app.config.suppress_callback_exceptions = True
