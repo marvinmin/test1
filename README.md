@@ -84,7 +84,7 @@ Command Prompt, replace `/$(pwd)` with PATH\_ON\_YOUR\_COMPUTER.*
       - numpy==1.17.2
       - sklearn==0.22.1
       - lightgbm==2.3.0
-  - R version 3.6.1 and R packages:
+  - R version 3.6.2 and R packages:
       - knitr==1.27
       - tidyverse==1.3.0
       - caret==6.0.85
